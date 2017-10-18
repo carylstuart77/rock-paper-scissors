@@ -64,10 +64,10 @@ public class Terrain {
       cells[neighbor[0]][neighbor[1]] = attacker;
     } else if (outcome < 0) {
         cells[cell[0]][cell[1]] = defender;
-  
+
       }
     }
-  }
+  
   private int[] randomCell() {
     return new int[]{
         getRng().nextInt(size),
