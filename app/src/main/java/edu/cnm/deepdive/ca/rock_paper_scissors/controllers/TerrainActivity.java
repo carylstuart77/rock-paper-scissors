@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.ca.rock_paper_scissors.activities;
+package edu.cnm.deepdive.ca.rock_paper_scissors.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
