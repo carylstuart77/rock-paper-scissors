@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/run_item"
+    android:title="@string/run_menu_text"
+    android:icon="@drawable/ic_play"
+    app:showAsAction="ifRoom" />
+
+  <item
+    android:id="@+id/pause_item"
+    android:title="@string/pause_menu_text"
+    android:icon="@drawable/ic_pause"
+    app:showAsAction="ifRoom"/>
+
+  <item
+    android:id="@+id/reset_item"
+    android:title="@string/reset_menu_text" />
+
+</menu>
