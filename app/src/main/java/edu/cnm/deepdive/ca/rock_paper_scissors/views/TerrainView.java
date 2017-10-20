@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import edu.cnm.deepdive.ca.rock_paper_scissors.models.Breed;
-
+//
 public class TerrainView extends View {
 
   //Initialization steps
