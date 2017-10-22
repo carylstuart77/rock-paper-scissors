@@ -9,12 +9,16 @@ import edu.cnm.deepdive.ca.rock_paper_scissors.R;
 import edu.cnm.deepdive.ca.rock_paper_scissors.models.Terrain;
 import edu.cnm.deepdive.ca.rock_paper_scissors.views.TerrainView;
 
-//
+/**
+ * Deadlock class for Rock-Paper-Scissors cellular automaton.
+ */
 public class TerrainActivity extends AppCompatActivity {
 
+  /**  Setting Resting time for Thread. */
   private static final int RUNNER_THREAD_REST = 40;
+  /** Setting Sleep time for Thread. */
   private static final int RUNNER_THREAD_SLEEP = 50;
-  //fields
+
   private boolean running = false;
   private boolean inForeground = false;
   private Terrain terrain = null;
@@ -43,7 +47,11 @@ public class TerrainActivity extends AppCompatActivity {
     super.onStop();
   }
 
-  //Host menu items.
+  /**
+   * Create host menu items Play, Pause, Reset
+   * @param menu
+   * @return
+   */
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.options, menu);
@@ -60,18 +68,21 @@ public class TerrainActivity extends AppCompatActivity {
     return super.onPrepareOptionsMenu(menu);
   }
 
+  /**
+   * Once option is selected running model either starts, stops or resets.
+   * @param item
+   * @return
+   */
+
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.run_item:
-        // Start the model running
         setRunning(true);
         break;
       case R.id.pause_item:
-        // Stop the model
         setRunning(false);
       case R.id.reset_item:
-        //Reset the model
         setInForeground(false);
         initializeModel();
         setInForeground(true);
@@ -84,24 +95,48 @@ public class TerrainActivity extends AppCompatActivity {
 
   }
 
+  /**
+   *Create new object terrain and calls method initialize() for assigned instance of Breed.
+   */
+
   private void initializeModel() {
     terrain = new Terrain();
     terrain.initialize();
 
   }
 
+  /**
+   * Assign values for Terrain layout and Terrain objects
+   */
   private void initializeUserInterface() {
     terrainLayout = findViewById(R.id.terrainLayout);
     terrainView = (TerrainView) findViewById(R.id.terrainView);
   }
 
+  /**
+   * Returns the current boolean value of running field.
+   * @returnSet
+   */
+
   public synchronized boolean isRunning() {
     return running;
   }
 
+  /**
+   * Value of running to be used by the Runner class to determine terrain.step() and
+   * terrainVIew.setSource() methods.
+   * @param running on or off flag
+   */
+
   public synchronized void setRunning(boolean running) {
     this.running = running;
   }
+
+  /**
+   * Determine inForeground status to start app, reset or pause application.
+   * If new runnable pull in Snapshot of array.
+   * @return
+   */
 
   public synchronized boolean isInForeground() {
     return inForeground;
@@ -125,6 +160,11 @@ public class TerrainActivity extends AppCompatActivity {
       runner = null;
     }
   }
+
+  /**
+   * Determines the state of the extended runner thread class and setting the thread to
+   * rest or sleep based upon condition.
+   */
 
   private class Runner extends Thread {
 
